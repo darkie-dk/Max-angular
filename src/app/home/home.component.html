@@ -1,2 +1,45 @@
-<h1>Home</h1>
-<p>home works!</p>
+<main>
+  <app-header />
+  <div class="container">
+    <h2>Clientes</h2>
+    <form action="">
+      <label for="search">Pesquisar por um cliente:</label>
+      <div class="search">
+        <input type="text" name="" id="search" placeholder="Digite um Id, Nome, Cpf/Cnpj . . .">
+        <button type="submit" class="search-button">Pesquisar</button>
+      </div>
+    </form>
+    <div class="table-container">
+      <table>
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>CPF/CNPJ</th>
+                  <th>Fantasia</th>
+                  <th>Pessoa</th>
+                  <th>Cadastro</th>
+                  <th>Status</th>
+                  <th>Editar</th>
+              </tr>
+          </thead>
+          <tbody>
+                @for (cliente of clientes(); track cliente.id ) {
+                    <tr>
+                        <td>{{ cliente.id }}</td>
+                        <td>{{ cliente.nome }}</td>
+                        <td>{{ cliente.cpf_cnpj }}</td>
+                        <td>{{ cliente.fantasia }}</td>
+                        <td>{{ cliente.tipo_pessoa }}</td>
+                        <td>{{ cliente.dt_inclusao }}</td>
+                        <td>{{ cliente.ativo ? 'Ativo' : 'Inativo' }}</td>
+                        <td class="update"><button class="update-button">✏️</button></td>
+                    </tr>
+                }
+          </tbody>
+      </table>
+  </div>
+
+  </div>
+  <app-footer />
+</main>

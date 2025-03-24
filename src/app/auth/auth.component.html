@@ -11,13 +11,13 @@
         <app-card [title]="'Faça seu Login'">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login">
             <label for="email">Email</label>
-            <input type="email" id="email" formControlName="email" />
+            <input type="email" id="email" formControlName="email" placeholder="max@maxdata.com.br" />
             <label for="empresa">Empresa</label>
-            <input type="number" id="empresa" formControlName="empresa_id" />
+            <input type="number" id="empresa" formControlName="empresa_id" placeholder="Número da empresa" />
             <label for="loja">Loja</label>
-            <input type="number" id="loja" formControlName="loja_id" />
+            <input type="number" id="loja" formControlName="loja_id" placeholder="Número da loja" />
             <label for="senha">Senha</label>
-            <input type="password" id="senha" formControlName="senha" />
+            <input type="password" id="senha" formControlName="senha" placeholder="#@%@&*$" />
 
             <button type="submit">Logar</button>
           </form>
