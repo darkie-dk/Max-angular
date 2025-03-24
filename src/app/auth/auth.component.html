@@ -1,0 +1,26 @@
+<main class="container">
+  <div class="sidebar">
+      <div class="header">
+        <img src="https://maxdata.com.br/wp-content/uploads/2022/08/LogoTransparente.png" class="logo" />
+      </div>
+      <footer class="footer">
+          Painel da MaxWeb &copy; MaxData - {{currentYear}}
+      </footer>
+  </div>
+    <div class="content">
+        <app-card [title]="'Faça seu Login'">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" />
+            <label for="empresa">Empresa</label>
+            <input type="number" id="empresa" formControlName="empresa_id" />
+            <label for="loja">Loja</label>
+            <input type="number" id="loja" formControlName="loja_id" />
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" formControlName="senha" />
+
+            <button type="submit">Logar</button>
+          </form>
+        </app-card>
+    </div>
+</main>
