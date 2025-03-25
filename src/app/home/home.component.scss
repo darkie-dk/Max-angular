@@ -53,7 +53,7 @@ th {
 
 .update-button {
   background-color: rgb(38, 40, 42);
-  border: 1px solid rgb(38, 40, 42);
+  border: 1px solid rgb(13, 34, 70);
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
@@ -61,48 +61,23 @@ th {
   padding: 4px;
 }
 
-button:hover {
-  background-color: rgb(38, 40, 42, 0.9);
+.update-button:hover {
+  background-color: rgb(13, 34, 70);
   transition: 0.2s;
-}
-
-form {
-  background-color: #f8f8f8;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 0px 12px;
-}
-
-
-label {
-  font-weight: 700;
-  color: #333;
-  padding-bottom: 2px;
-}
-
-input {
-  border: 1px solid rgb(51, 51, 51, 0.2);
-  border-radius: 2px;
-  padding: 4px;
-  background-color: rgb(248, 248, 248);
-  flex-grow: 1;
-  max-width: 80%;
-  line-height: 18px;
 }
 
 :focus {
   outline: 1px solid rgba(51, 51, 51, 0.247);
 }
 
-.search-button {
+.register-button {
   background-color: rgb(211, 6, 17);
   border: 1px solid  rgba(190, 10, 16, 0.9);
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
   font-weight: 600;
-  padding: 6px;
+  padding: 10px;
   margin-right: 12px;
 }
 
@@ -111,10 +86,10 @@ button:hover {
   transition: 0.2s;
 }
 
-.search {
+.register {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
-  gap: 6px;
+  justify-content: end;
+  padding: 4px 26px;
 }

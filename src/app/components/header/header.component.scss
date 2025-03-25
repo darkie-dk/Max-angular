@@ -5,6 +5,7 @@
   font-size: 18px;
   padding: 12px;
   background-color: rgb(38, 40, 42);
+  justify-content: space-between;
 }
 
 .logo {
@@ -15,3 +16,19 @@
   object-fit: contain;
   border-radius: 4px;
 }
+
+nav {
+  width: 10%;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: rgb(196, 31, 37);
+  font-size: larger;
+  font-weight: 700;
+  background-color: rgb(38, 40, 42);
+  padding: 6px;
+  border-radius: 2px;
+}
+

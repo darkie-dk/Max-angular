@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { EditComponent } from './edit/edit.component';
+import { RegisterClientComponent } from './register-client/register-client.component';
 
 export const routes: Routes = [
   {
@@ -15,7 +16,12 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'edit',
+    path: 'register',
+    pathMatch: 'full',
+    component: RegisterClientComponent,
+  },
+  {
+    path: 'edit/:id',
     pathMatch: 'full',
     component: EditComponent,
   }

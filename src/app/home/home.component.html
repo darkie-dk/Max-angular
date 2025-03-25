@@ -2,13 +2,11 @@
   <app-header />
   <div class="container">
     <h2>Clientes</h2>
-    <form action="">
-      <label for="search">Pesquisar por um cliente:</label>
-      <div class="search">
-        <input type="text" name="" id="search" placeholder="Digite um Id, Nome, Cpf/Cnpj . . .">
-        <button type="submit" class="search-button">Pesquisar</button>
-      </div>
-    </form>
+      <nav class="register">
+        <a>
+          <button type="submit" class="register-button" routerLink="/register">Novo Cadastro</button>
+        </a>
+      </nav>
     <div class="table-container">
       <table>
           <thead>
@@ -33,7 +31,9 @@
                         <td>{{ cliente.tipo_pessoa }}</td>
                         <td>{{ cliente.dt_inclusao }}</td>
                         <td>{{ cliente.ativo ? 'Ativo' : 'Inativo' }}</td>
-                        <td class="update"><button class="update-button">✏️</button></td>
+                        <td class="update">
+                          <button class="update-button" [routerLink]="['/edit', cliente.id]">✏️</button>
+                        </td>
                     </tr>
                 }
           </tbody>
