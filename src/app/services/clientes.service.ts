@@ -1,5 +1,5 @@
-import { Inject, Injectable } from '@angular/core'
-import { Cliente, type ClienteUpdateRequest } from '../../@types/Cliente'
+import { Injectable } from '@angular/core'
+import { Cliente, ClienteRequest } from '../../@types/Cliente'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { environment } from '../../enviroment/env'
 import { AuthService } from './auth.service'
@@ -20,7 +20,9 @@ export interface FetchClientesResponse {
 }
 
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
 export class ClientesService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -43,7 +45,7 @@ export class ClientesService {
     return this.http.get<Cliente>(url, { headers })
   }
 
-  updateClienteByIdFromApi(apiPath: string, clientData: ClienteUpdateRequest) {
+  updateClienteByIdFromApi(apiPath: string, clientData: ClienteRequest) {
     const url = `${environment.apiBaseUrl}${apiPath}`
     const sessionToken = this.auth.getTokenFromSession()
     const headers = new HttpHeaders({
@@ -52,6 +54,16 @@ export class ClientesService {
     console.log(clientData)
     console.log(url)
     return this.http.put(url, clientData, { headers })
+  }
+
+  registerClienteFromApi(apiPath: string, clientData: ClienteRequest) {
+    const url = `${environment.apiBaseUrl}${apiPath}`
+    const sessionToken = this.auth.getTokenFromSession()
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${sessionToken}`
+    })
+    console.log(clientData)
+    return this.http.post(url, clientData, { headers })
   }
 }
 

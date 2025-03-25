@@ -3,7 +3,7 @@ import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { ClientesService } from '../services/clientes.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Cliente, TipoCadastro, type ClienteUpdateRequest } from '../../@types/Cliente';
+import { Cliente, TipoCadastro, ClienteRequest } from '../../@types/Cliente';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -81,6 +81,8 @@ export class EditComponent implements OnInit {
         .subscribe((response: any) => {
           this.clienteOriginal = response
           this.dadosForm.patchValue(response)
+          this.contatoForm.patchValue(response.cadastro_contato_padrao)
+          this.enderecoForm.patchValue(response.cadastro_endereco_padrao)
           console.log(response)
         })
     }
@@ -90,21 +92,19 @@ export class EditComponent implements OnInit {
       const updatedCliente = {
         ...this.clienteOriginal,
         ...this.dadosForm.value,
-        cadastro_endereco_padrao: {
-          ...this.enderecoForm.value
-        },
+        cadastro_endereco_padrao:{
+            ...this.enderecoForm.value
+          },
         cadastro_contato_padrao: {
           ...this.contatoForm.value
         },
-      } as ClienteUpdateRequest
+      } as ClienteRequest
       this.route.params.subscribe((params) => {
         const clienteId = params['id']
         const apiPath = `/api/v1/Cadastro/${clienteId}`
 
         this.clientesService.updateClienteByIdFromApi(apiPath, updatedCliente).subscribe({
-          next: () => {
-            this.router.navigate(['/home'])
-          },
+          next: () => {},
           error: (error) => {
             console.error('Erro ao atualizar cliente:', error)
           }

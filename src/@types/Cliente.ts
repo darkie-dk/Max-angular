@@ -44,7 +44,7 @@ export interface Cliente {
   dt_inclusao: string
 }
 
-export interface CadastroEnderecoPadraoUpdate {
+export interface CadastroEnderecoPadraoRequest {
   descricao: string | null;
   endereco: string | null;
   endereco_numero: string | null;
@@ -56,7 +56,7 @@ export interface CadastroEnderecoPadraoUpdate {
   ie_produtor_rural: string | null;
 }
 
-export interface CadastroContatoPadraoUpdate {
+export interface CadastroContatoPadraoRequest {
   descricao: string | null;
   fone: string | null;
   email: string | null;
@@ -65,7 +65,7 @@ export interface CadastroContatoPadraoUpdate {
   enviar_boleto: boolean | null;
 }
 
-export interface ClienteUpdateRequest {
+export interface ClienteRequest {
   nome: string | null;
   fantasia: string | null;
   tipo_pessoa: 'Fisica' | 'Juridica';
@@ -75,6 +75,6 @@ export interface ClienteUpdateRequest {
   rg_ie: string | null;
   tipo_regime_apuracao: 'Simples' | 'Normal';
   tipo_preco_venda: string | null;
-  cadastro_endereco_padrao: CadastroEnderecoPadraoUpdate | null;
-  cadastro_contato_padrao: CadastroContatoPadraoUpdate | null;
+  cadastro_endereco_padrao: CadastroEnderecoPadraoRequest | null;
+  cadastro_contato_padrao: CadastroContatoPadraoRequest | null;
 }

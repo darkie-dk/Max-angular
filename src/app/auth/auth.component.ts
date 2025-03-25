@@ -35,7 +35,6 @@ export class AuthComponent implements OnInit {
         next: (response) => {
           sessionStorage.setItem('token', response.access_token)
           sessionStorage.setItem('refresh_token', response.refresh_token)
-          console.log(sessionStorage.getItem('token'))
           this.router.navigate(['/home'])
         },
         error: (error) => {
