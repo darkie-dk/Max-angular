@@ -18,16 +18,22 @@
 }
 
 nav {
-  width: 10%;
+  width: 20%;
+  min-width: fit-content;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 a {
+  width: 80px;
+  text-align: center;
   outline: none;
   text-decoration: none;
-  color: rgb(196, 31, 37);
+  color: #fff;
   font-size: larger;
   font-weight: 700;
-  background-color: rgb(38, 40, 42);
+  background-color: rgb(196, 31, 37);
   padding: 6px;
   border-radius: 2px;
 }

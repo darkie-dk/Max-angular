@@ -93,3 +93,36 @@ button:hover {
   justify-content: end;
   padding: 4px 26px;
 }
+
+.pagination {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 12px;
+}
+
+.pagination-button {
+  width: 70px;
+  padding: 4px;
+  border: 1px solid rgb(38, 40, 42, 0.6);
+  border-radius: 2px;
+  background-color: rgb(226, 14, 21);
+  color: #fff;
+  cursor: pointer;
+}
+
+.pagination-button:disabled {
+  padding: 4px;
+  border: 1px solid rgb(38, 40, 42);
+  border-radius: 2px;
+  background-color: rgb(38, 40, 42, 0.3);
+  color: #fff;
+  cursor: default;
+}
+
+.pagination-info {
+  font-size: large;
+  color: rgb(38, 40, 42);
+  font-weight: 600;
+}

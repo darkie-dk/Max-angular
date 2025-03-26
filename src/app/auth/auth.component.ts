@@ -33,9 +33,9 @@ export class AuthComponent implements OnInit {
       this.authService.loginFromApi('/api/v1/Auth/login', loginRequest)
       .subscribe({
         next: (response) => {
-          sessionStorage.setItem('token', response.access_token)
+          sessionStorage.setItem('access_token', response.access_token)
           sessionStorage.setItem('refresh_token', response.refresh_token)
-          this.router.navigate(['/home'])
+          this.router.navigate(['/app'])
         },
         error: (error) => {
           console.error('Erro no login:', error)

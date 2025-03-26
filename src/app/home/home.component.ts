@@ -16,12 +16,27 @@ import { RouterLink } from '@angular/router';
 export class HomeComponent implements OnInit {
   clientesService = inject(ClientesService)
   clientes = signal<Array<Cliente>>([])
-  pagination = signal<Pagination | null>(null)
-  total = signal(0)
+  paginacao = signal<Pagination>({
+      total_registros: 0,
+      total_vlr: null,
+      limit: 20,
+      offset: 0,
+      sort:"id" 
+    })
+
+  currentPage = signal<number>(Math.ceil(this.paginacao().offset / this.paginacao().limit) + 1)
+
+  totalPages(): number {
+    return Math.ceil(this.paginacao().total_registros / this.paginacao().limit);
+  }
   
 
   ngOnInit(): void {
-    this.clientesService.fetchClientesFromApi('/api/v1/Cadastro')
+    this.loadFetching()
+  }
+
+  loadFetching() {
+    this.clientesService.fetchClientesFromApi('/api/v1/Cadastro', this.paginacao())
     .pipe(
       catchError((err) => {
         console.log(err)
@@ -30,8 +45,29 @@ export class HomeComponent implements OnInit {
     )
     .subscribe((response: FetchClientesResponse) => {
       this.clientes.set(response.itens)
-      this.pagination.set(response.pagination)
-      this.total.set(response.total)
+      this.paginacao.set(response.paginacao)
     })
+  }
+
+  goToPage(page: number) {
+    if (page < 1 || page > this.totalPages()) return
+    const newOffset = (page - 1) * this.paginacao().limit
+    this.paginacao.set({ ...this.paginacao(), offset: newOffset })
+    this.currentPage.set(page)
+    this.loadFetching()
+  }
+
+  nextPage() {
+    if (this.currentPage() < this.totalPages()) {
+      this.goToPage(this.currentPage() + 1)
+    }
+    this.loadFetching()
+  }
+
+  previousPage() {
+    if (this.currentPage() > 1) {
+      this.goToPage(this.currentPage() - 1)
+    }
+    this.loadFetching()
   }
 }

@@ -15,7 +15,7 @@ export interface Pagination {
 export interface FetchClientesResponse {
   success: boolean
   itens: Cliente[]
-  pagination: Pagination
+  paginacao: Pagination
   total: number
 }
 
@@ -26,13 +26,21 @@ export interface FetchClientesResponse {
 export class ClientesService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  fetchClientesFromApi(apiPath: string) {
+  fetchClientesFromApi(apiPath: string, paginacao?: Pagination) {
     const url = `${environment.apiBaseUrl}${apiPath}`  
     const sessionToken = this.auth.getTokenFromSession()
     const headers = new HttpHeaders({
       Authorization: `Bearer ${sessionToken}`
     })
-    return this.http.get<FetchClientesResponse>(url, { headers })
+    let params = {}
+    if (paginacao) {
+      params = {
+        limit: paginacao.limit.toString(),
+        offset: paginacao.offset.toString(),
+      }
+    }
+
+    return this.http.get<FetchClientesResponse>(url, { headers, params })
   }
 
   

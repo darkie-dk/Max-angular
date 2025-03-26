@@ -38,6 +38,28 @@
                 }
           </tbody>
       </table>
+      <div class="pagination">
+        <button class="pagination-button" (click)="goToPage(1)" [disabled]="currentPage() === 1">
+          Primeira
+        </button>
+      
+        <button class="pagination-button" (click)="previousPage()" [disabled]="currentPage() === 1">
+          Anterior
+        </button>
+      
+        <button class="pagination-button" (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+          Próxima
+        </button>
+      
+        <button class="pagination-button" (click)="goToPage(totalPages())" [disabled]="currentPage() === totalPages()">
+          Última
+        </button>
+      </div>
+      
+      <div class="pagination-info">
+        Página Atual: {{ currentPage() }}
+        Total de Registros: {{ paginacao().total_registros }}
+      </div>
   </div>
 
   </div>
