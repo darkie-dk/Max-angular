@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
 
   goToPage(page: number) {
     if (page < 1 || page > this.totalPages()) return
-    const newOffset = (page - 1) * this.paginacao().limit
+    const newOffset = ((page - 1) * this.paginacao().limit) - 1
     this.paginacao.set({ ...this.paginacao(), offset: newOffset })
     this.currentPage.set(page)
     this.loadFetching()

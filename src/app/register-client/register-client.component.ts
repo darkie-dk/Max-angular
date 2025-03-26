@@ -69,7 +69,7 @@ export class RegisterClientComponent implements OnInit {
 
       this.clientesService.registerClienteFromApi('/api/v1/Cadastro', clienteData).subscribe({
         next: () => {
-          this.router.navigate(['/home'])
+          this.router.navigate(['/app'])
         },
         error: (err: Error) => {
           console.error('Erro ao cadastrar cliente:', err)
